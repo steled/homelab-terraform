@@ -10,7 +10,7 @@ server = {
 }
 
 ## Cloudflare
-cloudflare_api_token   = "<REDACTED>"
+cloudflare_api_token = "<REDACTED>"
 # cloudflare_dns_zone_id = "<REDACTED>"
 # cloudflare_dnsrecord = [
 #   "(\"<REDACTED>\" \"<REDACTED>\")",
