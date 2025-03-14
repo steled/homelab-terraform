@@ -6,7 +6,7 @@ module "nextcloud" {
   ssh_host = var.server.host
 
   # renovate: datasource=github-tags depName=nextcloud packageName=nextcloud/helm
-  nextcloud_version         = "6.6.6" # get version from here: https://github.com/nextcloud/helm/blob/main/charts/nextcloud/Chart.yaml#L3
+  nextcloud_version         = "6.6.9" # get version from here: https://github.com/nextcloud/helm/blob/main/charts/nextcloud/Chart.yaml#L3
   kubernetes_namespace_name = "nextcloud"
   maintenance_job_image     = "nextcloud:30.0.5-fpm" # get version from here: https://github.com/nextcloud/helm/blob/main/charts/nextcloud/Chart.yaml#L5
   nextcloud_domain          = var.nextcloud_prd_domain
