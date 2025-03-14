@@ -5,7 +5,7 @@ module "victoriametrics" {
   # renovate: datasource=docker depName=haproxy packageName=haproxy
   haproxy_version = "3.1.5-alpine" # check version here: https://hub.docker.com/_/haproxy/tags?name=alpine
   # renovate: datasource=github-tags depName=victoriametrics packageName=VictoriaMetrics/helm-charts
-  victoriametrics_version   = "0.38.0" # check version here: https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/Chart.yaml#L5
+  victoriametrics_version   = "0.39.0" # check version here: https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/Chart.yaml#L5
   kubernetes_namespace_name = "victoriametrics"
   vmsingle_domains          = var.victoriametrics_vmsingle_domains
   alertmanager_domains      = var.victoriametrics_alertmanager_domains
