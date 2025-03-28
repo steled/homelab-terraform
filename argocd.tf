@@ -3,7 +3,7 @@ module "argocd" {
   # source = "../terraformmodules/argocd/"
 
   # renovate: datasource=github-tags depName=argocd packageName=argoproj/argo-helm
-  argocd_version = "7.8.13" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/Chart.yaml#L6
+  argocd_version = "7.8.14" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/Chart.yaml#L6
   # renovate: datasource=github-tags depName=argocd-apps packageName=argoproj/argo-helm
   argocd_apps_version             = "2.0.2" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/Chart.yaml#L5
   kubernetes_namespace_name       = "argocd"
