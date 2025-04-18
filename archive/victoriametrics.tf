@@ -3,7 +3,7 @@ module "victoriametrics" {
   # source = "../terraformmodules/victoriametrics/"
 
   # renovate: datasource=docker depName=haproxy packageName=haproxy
-  haproxy_version = "3.1.6-alpine" # check version here: https://hub.docker.com/_/haproxy/tags?name=alpine
+  haproxy_version = "3.1.7-alpine" # check version here: https://hub.docker.com/_/haproxy/tags?name=alpine
   # renovate: datasource=github-tags depName=victoriametrics packageName=VictoriaMetrics/helm-charts
   victoriametrics_version   = "0.42.0" # check version here: https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/Chart.yaml#L5
   kubernetes_namespace_name = "victoriametrics"
