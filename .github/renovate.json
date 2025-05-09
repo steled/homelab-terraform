@@ -4,7 +4,9 @@
     "main"
   ],
   "dependencyDashboard": true,
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "enabledManagers": [
     "custom.regex",
     "github-actions",
@@ -13,8 +15,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "\\.tf$"
+      "managerFilePatterns": [
+        "/\\.tf$/"
       ],
       "matchStrings": [
         "\\s*# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_(VERSION|version)\\s*:*\\??=\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
@@ -22,46 +24,72 @@
     }
   ],
   "github-actions": {
-    "fileMatch": [
-      "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
-      "(^|/)action\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/",
+      "/(^|/)action\\.ya?ml$/"
     ]
   },
   "terraform": {
     "commitMessageTopic": "Terraform {{depName}}",
-    "fileMatch": [
-      "\\.tf$"
+    "managerFilePatterns": [
+      "/\\.tf$/"
     ],
     "pinDigests": false
   },
   "packageRules": [
     {
-      "matchManagers": ["custom.regex", "github-actions", "terraform"],
+      "matchManagers": [
+        "custom.regex",
+        "github-actions",
+        "terraform"
+      ],
       "separateMinorPatch": true
     },
     {
-      "matchManagers": ["custom.regex", "github-actions", "terraform"],
-      "matchUpdateTypes": ["patch"],
+      "matchManagers": [
+        "custom.regex",
+        "github-actions",
+        "terraform"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchDatasources": ["github-tags"],
-      "matchPackageNames": ["VictoriaMetrics/helm-charts"],
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchPackageNames": [
+        "VictoriaMetrics/helm-charts"
+      ],
       "extractVersion": "^victoria-metrics-k8s-stack-(?<version>.*)$"
     },
     {
-      "matchDatasources": ["github-tags"],
-      "matchPackageNames": ["nextcloud/helm"],
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchPackageNames": [
+        "nextcloud/helm"
+      ],
       "extractVersion": "^nextcloud-(?<version>.*)$"
     },
     {
-      "matchDatasources": ["github-tags"],
-      "matchDepNames": ["argocd"],
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchDepNames": [
+        "argocd"
+      ],
       "extractVersion": "^argo-cd-(?<version>.*)$"
     },
     {
-      "matchDatasources": ["github-tags"],
-      "matchDepNames": ["argocd-apps"],
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchDepNames": [
+        "argocd-apps"
+      ],
       "extractVersion": "^argocd-apps-(?<version>.*)$"
     }
   ]
