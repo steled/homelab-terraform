@@ -3,6 +3,7 @@
   "branchConcurrentLimit": 3,
   "branchPrefix": "renovate/",
   "gitAuthor": "steled <34886888+steled@users.noreply.github.com>",
+  "ignorePaths": ["**/archive/**"],
   "onboarding": false,
   "platform": "github",
   "prConcurrentLimit": 10,
