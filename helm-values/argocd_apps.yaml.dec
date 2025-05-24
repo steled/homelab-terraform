@@ -1,0 +1,200 @@
+projects:
+  apps:
+    namespace: argocd
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    description: Application Project
+    sourceRepos:
+      - git@github.com:steled/argocd-apps.git
+      - https://charts.jetstack.io
+      - https://charts.longhorn.io
+      - https://charts.min.io/
+      - https://helm.releases.hashicorp.com
+      - https://nextcloud.github.io/helm/
+      - https://victoriametrics.github.io/helm-charts/
+      - https://sj14.github.io/helm-charts
+      - https://pmoscode-helm.github.io/jdownloader2/
+      - https://prometheus-community.github.io/helm-charts
+    destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+    - group: scheduling.k8s.io
+      kind: PriorityClass
+    - group: cert-manager.io
+      kind: ClusterIssuer
+
+applications:
+  root-app:
+    namespace: argocd
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    project: apps
+    sources:
+      - path: apps
+        repoURL: git@github.com:steled/argocd-apps.git
+        targetRevision: HEAD
+        helm:
+          parameters:
+            - name: "vault.server.ingress.annotations.lbipamCiliumIoIps"
+              value: "<REDACTED>"
+            - name: "vault.server.ingress.hosts0.host"
+              value: "<REDACTED>"
+            - name: "vault.server.ingress.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "apprise.htpasswd"
+              value: "<REDACTED>"
+            - name: "apprise.domain"
+              value: "<REDACTED>"
+            - name: "certmanager.clusterIssuer.email"
+              value: "<REDACTED>"
+            - name: "certmanager.secret.cloudflare.apiToken"
+              value: "<REDACTED>"
+            - name: "certmanager.secret.cloudflareDyndns.env"
+              value: |
+                dnsrecord1=("<REDACTED>" "<REDACTED>")
+                dnsrecord2=("<REDACTED>" "<REDACTED>")
+                dnsrecord3=("<REDACTED>" "<REDACTED>")
+                dnsrecords=("<REDACTED>" "<REDACTED>")
+            - name: "certmanager.secret.cloudflareDyndns.authKey"
+              value: "<REDACTED>"
+            - name: "certmanager.secret.cloudflareDyndns.dnsZoneId"
+              value: "<REDACTED>"
+            - name: "longhorn.host"
+              value: "<REDACTED>"
+            - name: "longhorn.secret.awsAccessKeyId"
+              value: "<REDACTED>"
+              # value: "<REDACTED>"
+            - name: "longhorn.secret.awsSecretAccessKey"
+              value: "<REDACTED>"
+              # value: "<REDACTED>"
+            - name: "longhorn.secret.awsEndpoints"
+              value: "<REDACTED>"
+            # - name: "minio.ingress.hosts0"
+            #   value: "<REDACTED>"
+            # - name: "minio.ingress.tls0.hosts0"
+            #   value: "<REDACTED>"
+            # - name: "minio.consoleIngress.hosts0"
+            #   value: "<REDACTED>"
+            # - name: "minio.consoleIngress.tls0.hosts0"
+            #   value: "<REDACTED>"
+            # - name: "minio.svcaccts0.user1.accessKey"
+            #   value: "<REDACTED>"
+            # - name: "minio.secret.rootPassword"
+            #   value: "<REDACTED>"
+            # - name: "minio.secret.rootUser"
+            #   value: "<REDACTED>"
+            # - name: "minio.secret.user1_password"
+            #   value: "<REDACTED>"
+            # - name: "minio.secret.user1_secretKey"
+            #   value: "<REDACTED>"
+            - name: "minio.endpoint.minio.ip"
+              value: "<REDACTED>"
+            - name: "minio.ingress.minio.host0"
+              value: "<REDACTED>"
+            - name: "minio.ingress.minio.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "minio.endpoint.minioConsole.ip"
+              value: "<REDACTED>"
+            - name: "minio.ingress.minioConsole.host0"
+              value: "<REDACTED>"
+            - name: "minio.ingress.minioConsole.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "nextcloud.ingress.tls0.hosts0"
+              # value: "<REDACTED>"
+              value: "<REDACTED>"
+            - name: "nextcloud.host"
+              # value: "<REDACTED>"
+              value: "<REDACTED>"
+            - name: "nextcloud.mail.fromAddress"
+              value: "<REDACTED>"
+            - name: "nextcloud.mail.domain"
+              value: "<REDACTED>"
+            - name: "nextcloud.trustedDomains0"
+              # value: "<REDACTED>"
+              value: "<REDACTED>"
+            - name: "nextcloud.extraEnv0.overwritehost"
+              # value: "<REDACTED>"
+              value: "<REDACTED>"
+            - name: "nextcloud.extraEnv1.overwritecliurl"
+              # value: "<REDACTED>"
+              value: "<REDACTED>"
+            - name: "nextcloud.externalDatabase.database"
+              value: "<REDACTED>"
+            - name: "nextcloud.postgresql.global.postgresql.auth.database"
+              value: "<REDACTED>"
+            - name: "nextcloud.postgresql.global.postgresql.auth.username"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.nextcloudUsername"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.nextcloudPassword"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.postgresqlUsername"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.postgresqlAdminPassword"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.postgresqlUserPassword"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.smtpHost"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.smtpUsername"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.smtpPassword"
+              value: "<REDACTED>"
+            - name: "nextcloud.secret.redisPassword"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmsingle.ingress.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmsingle.ingress.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.alertmanager.ingress.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.alertmanager.ingress.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.alertmanager.config.receivers.telegram_configs.bot_token"
+              value: "<REDACTED>"
+            - name: "victoriametrics.alertmanager.config.receivers.telegram_configs.chat_id"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmalert.ingress.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmalert.ingress.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmagent.ingress.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.vmagent.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.grafana.ingress.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.grafana.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "victoriametrics.secret.grafanaAdminPassword"
+              value: "<REDACTED>"
+            - name: "victoriametrics.secret.grafanaAdminUser"
+              value: "<REDACTED>"
+            - name: "hassio.endpoint.ip"
+              value: "<REDACTED>"
+            - name: "hassio.ingress.host0"
+              value: "<REDACTED>"
+            - name: "hassio.ingress.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "jdSftp.jdownloader2.email"
+              value: "<REDACTED>"
+            - name: "jdSftp.downloader2.password"
+              value: "<REDACTED>"
+            - name: "jdSftp.sftpServer.service.annotations.lbipamCiliumIoIps"
+              value: "<REDACTED>"
+    destination:
+      name: in-cluster
+      namespace: argocd
