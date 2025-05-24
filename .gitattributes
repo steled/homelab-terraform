@@ -1,6 +1,7 @@
 #pattern  filter=crypt diff=crypt merge=crypt
 # *-values.yaml filter=crypt diff=crypt merge=crypt
 *.id_rsa filter=crypt diff=crypt merge=crypt
+*.tfstate filter=crypt diff=crypt merge=crypt
 argocd_apps.yaml filter=crypt diff=crypt merge=crypt
 duckdns-webhook-values.yaml filter=crypt diff=crypt merge=crypt
 # hassio.tf filter=crypt diff=crypt merge=crypt
