@@ -39,7 +39,7 @@ jobs:
           transcrypt -c aes-256-cbc -p ${{ secrets.TRANSCRYPT_PASSWORD }} -y
 
       - name: terraform fmt
-        uses: dflook/terraform-fmt@v1
+        uses: dflook/terraform-fmt@v2
         with:
           path: .
 
