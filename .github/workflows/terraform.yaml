@@ -78,17 +78,17 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: tflint --init
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
+    # - name: Setup Terraform
+    #   uses: hashicorp/setup-terraform@v3
 
-    - name: Show version
-      run: terraform --version
+    # - name: Show version
+    #   run: terraform --version
 
-    - name: Init Terraform
-      run: |
-        # replace SSH cloning wiht HTTPS cloning method
-        sed -i 's/git@github.com:steled/github.com\/steled/' *.tf
-        terraform init
+    # - name: Init Terraform
+    #   run: |
+    #     # replace SSH cloning wiht HTTPS cloning method
+    #     sed -i 's/git@github.com:steled/github.com\/steled/' *.tf
+    #     terraform init
 
     - name: Run TFLint
       env:
