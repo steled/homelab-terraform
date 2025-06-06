@@ -23,7 +23,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Clone git repo elasticdog/transcrypt
@@ -60,6 +60,18 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v4
 
+    - name: Clone git repo elasticdog/transcrypt
+      run: |
+        echo 'Cloning transcrypt main branch'
+        git clone https://github.com/elasticdog/transcrypt.git ../transcrypt
+        cd ../transcrypt
+        sudo ln -s ${PWD}/transcrypt /usr/local/bin/transcrypt
+
+    - name: Configure transcrypt
+      run: |
+        cd $GITHUB_WORKSPACE
+        transcrypt -c aes-256-cbc -p ${{ secrets.TRANSCRYPT_PASSWORD }} -y
+
     - name: Cache plugin dir
       uses: actions/cache@v4
       with:
@@ -87,7 +99,6 @@ jobs:
     - name: Init Terraform
       run: |
         # replace SSH cloning wiht HTTPS cloning method
-        cat terraform.tfstate
         sed -i 's/git@github.com:steled/github.com\/steled/' *.tf
         TF_LOG=DEBUG terraform init
 
