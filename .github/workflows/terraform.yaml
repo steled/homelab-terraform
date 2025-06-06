@@ -88,7 +88,7 @@ jobs:
       run: |
         # replace SSH cloning wiht HTTPS cloning method
         sed -i 's/git@github.com:steled/github.com\/steled/' *.tf
-        terraform init
+        TF_LOG=DEBUG terraform init
 
     - name: Run TFLint
       env:
