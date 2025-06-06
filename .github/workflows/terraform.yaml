@@ -76,7 +76,7 @@ jobs:
       env:
         # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
         GITHUB_TOKEN: ${{ github.token }}
-      run: tflint --init
+      run: tflint --recursive --init
 
     # - name: Setup Terraform
     #   uses: hashicorp/setup-terraform@v3
@@ -93,7 +93,7 @@ jobs:
     - name: Run TFLint
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      run: tflint --call-module-type=all
+      run: tflint --recursive --call-module-type=all
 
   tfdocs:
     permissions:
