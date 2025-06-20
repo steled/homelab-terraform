@@ -1,5 +1,5 @@
 module "cert_manager_cloudflare" {
-  source = "git@github.com:steled/terraformmodules.git//cert-manager_cloudflare?ref=v0.15"
+  source = "git@github.com:steled/terraformmodules.git//cert-manager_cloudflare?ref=v0.16"
   # source = "../terraformmodules/cert-manager_cloudflare/"
 
   # renovate: datasource=github-tags depName=cert-manager packageName=cert-manager/cert-manager
