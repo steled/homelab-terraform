@@ -15,6 +15,7 @@ projects:
       - https://sj14.github.io/helm-charts
       - https://pmoscode-helm.github.io/jdownloader2/
       - https://prometheus-community.github.io/helm-charts
+      - ghcr.io/immich-app/immich-charts
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -67,6 +68,7 @@ applications:
                 dnsrecord1=("<REDACTED>" "<REDACTED>")
                 dnsrecord2=("<REDACTED>" "<REDACTED>")
                 dnsrecord3=("<REDACTED>" "<REDACTED>")
+                dnsrecord4=("<REDACTED>" "<REDACTED>")
                 dnsrecords=("<REDACTED>" "<REDACTED>")
             - name: "certmanager.secret.cloudflareDyndns.authKey"
               value: "<REDACTED>"
@@ -194,6 +196,22 @@ applications:
             - name: "jdSftp.downloader2.password"
               value: "<REDACTED>"
             - name: "jdSftp.sftpServer.service.annotations.lbipamCiliumIoIps"
+              value: "<REDACTED>"
+            - name: "immich.server.ingress.main.hosts0.host"
+              value: "<REDACTED>"
+            - name: "immich.server.ingress.main.tls0.hosts0"
+              value: "<REDACTED>"
+            - name: "immich.postgresql.global.postgresql.auth.database"
+              value: "<REDACTED>"
+            - name: "immich.postgresql.global.postgresql.auth.username"
+              value: "<REDACTED>"
+            - name: "immich.secret.postgresqlAdminPassword"
+              value: "<REDACTED>"
+            - name: "immich.secret.postgresqlUserPassword"
+              value: "<REDACTED>"
+            - name: "immich.secret.postgresqlUsername"
+              value: "<REDACTED>"
+            - name: "immich.secret.redisPassword"
               value: "<REDACTED>"
     destination:
       name: in-cluster
