@@ -186,6 +186,8 @@ applications:
               value: "<REDACTED>"
             - name: "victoriametrics.secret.grafanaAdminUser"
               value: "<REDACTED>"
+            - name: "victoriametrics.secret.minioBearerToken"
+              value: "<REDACTED>"
             - name: "hassio.endpoint.ip"
               value: "<REDACTED>"
             - name: "hassio.ingress.host0"
