@@ -5,7 +5,9 @@
     "github>steled/renovate-config:terraform_preset.json"
   ],
   "enabledManagers": [
-    "custom.regex"
+    "custom.regex",
+    "github-actions",
+    "terraform"
   ],
   "customManagers": [
     {
