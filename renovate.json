@@ -1,16 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": [
-    "main"
-  ],
-  "dependencyDashboard": true,
-  "labels": [
-    "dependencies"
+  "extends": [
+    "github>steled/renovate-config",
+    "github>steled/renovate-config:terraform_preset.json"
   ],
   "enabledManagers": [
-    "custom.regex",
-    "github-actions",
-    "terraform"
+    "custom.regex"
   ],
   "customManagers": [
     {
@@ -23,33 +18,16 @@
       ]
     }
   ],
-  "github-actions": {
-    "managerFilePatterns": [
-      "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/",
-      "/(^|/)action\\.ya?ml$/"
-    ]
-  },
-  "terraform": {
-    "commitMessageTopic": "Terraform {{depName}}",
-    "managerFilePatterns": [
-      "/\\.tf$/"
-    ],
-    "pinDigests": false
-  },
   "packageRules": [
     {
       "matchManagers": [
-        "custom.regex",
-        "github-actions",
-        "terraform"
+        "custom.regex"
       ],
       "separateMinorPatch": true
     },
     {
       "matchManagers": [
-        "custom.regex",
-        "github-actions",
-        "terraform"
+        "custom.regex"
       ],
       "matchUpdateTypes": [
         "patch"
