@@ -17,6 +17,7 @@ projects:
       - https://prometheus-community.github.io/helm-charts
       - ghcr.io/immich-app/immich-charts
       - registry-1.docker.io/bitnamicharts
+      - https://jellyfin.github.io/jellyfin-helm
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -215,6 +216,10 @@ applications:
             - name: "immich.secret.postgresqlUsername"
               value: "<REDACTED>"
             - name: "immich.secret.redisPassword"
+              value: "<REDACTED>"
+            - name: "jellyfin.ingress.hosts0.host"
+              value: "<REDACTED>"
+            - name: "jellyfin.ingress.tls0.hosts0"
               value: "<REDACTED>"
     destination:
       name: in-cluster
