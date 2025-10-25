@@ -43,9 +43,15 @@ projects:
 applications:
   root-app:
     namespace: argocd
+    additionalAnnotations: {
+      "argocd.argoproj.io/sync-wave": "0"
+    }
     finalizers:
     - resources-finalizer.argocd.argoproj.io
     project: apps
+    destination:
+      name: in-cluster
+      namespace: argocd
     sources:
       - path: apps
         repoURL: git@github.com:steled/argocd-apps.git
@@ -140,6 +146,6 @@ applications:
               value: "<REDACTED>"
             - name: "victoriametrics.grafana.tls0.hosts0"
               value: "<REDACTED>"
-    destination:
-      name: in-cluster
-      namespace: argocd
+    syncPolicy:
+      syncOptions:
+        - RespectResourceOrder=true
