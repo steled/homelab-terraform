@@ -1,7 +1,7 @@
 #!/bin/bash
 
 hassio=172.16.3.20
-backup_dir=/ext/backup/hassio/
+backup_dir=/ext/backups/hassio/
 
 # if [ ! -f ~/.ssh/known_hosts ]; then
 #     touch ~/.ssh/known_hosts
