@@ -28,8 +28,16 @@
 #   # timeout = "10m"
 # }
 
+locals {
+  file_hashes = {
+    for f in fileset("${path.module}/files", "**") :
+    f => filemd5("${path.module}/files/${f}")
+  }
+}
+
 resource "terraform_data" "files" {
-  triggers_replace = fileset("${path.module}/files", "**")
+  # triggers_replace = fileset("${path.module}/files", "**")
+  triggers_replace = local.file_hashes
 
   connection {
     type = "ssh"
