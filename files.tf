@@ -26,6 +26,8 @@ resource "terraform_data" "files" {
       "sudo chown steled:steled /ext/logs",
       "sudo mkdir --mode 0755 -p /ext/scripts",
       "sudo chown steled:steled /ext/scripts",
+      "sudo mkdir --mode 0755 -p /ext/backups",
+      "sudo chown steled:steled /ext/backups",
       "mv /tmp/files/ssh-keys/* ~/.ssh/",
       "mv /tmp/files/* /ext/scripts",
       "chmod 0600 -R ~/.ssh/*",
