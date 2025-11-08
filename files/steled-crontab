@@ -7,6 +7,6 @@
 # Terraform: gitea backup
 # 30 22 * * * /ext/scripts/gitea_backup_k8s.sh 2> /ext/logs/gitea_backup_error.log
 # Terraform: nextcloud backup
-00 23 * * * /ext/scripts/nextcloud_backup.sh 2> /ext/logs/nextcloud_backup_error.log
+# 00 23 * * * /ext/scripts/nextcloud_backup.sh 2> /ext/logs/nextcloud_backup_error.log
 # Terraform: k8s-c01 backup
 00 00 * * * /ext/scripts/k8s-c01_backup.sh 2> /ext/logs/k8s-c01_backup_error.log
