@@ -50,7 +50,7 @@ fi
 
 echo -e "\033[41;106mRunning rsync\033[0m"
 
-sudo rsync --exclude 'jdownloader/downloads' --rsync-path="sudo rsync" --delete -ave "ssh -i /home/steled/.ssh/backup.id_rsa" /ext/ steled@$HOST:/ext/k8s-c01_backup/
+sudo rsync --exclude 'persistent' --rsync-path="sudo rsync" --delete -ave "ssh -i /home/steled/.ssh/backup.id_rsa" /ext/ steled@$HOST:/ext/k8s-c01_backup/
 
 #if [ ! -f ~/.ssh/known_hosts ]; then
 #  echo -e "\033[41;106mRunning creating file ~/.ssh/known_hosts\033[0m"
