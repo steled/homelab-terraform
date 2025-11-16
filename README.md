@@ -29,8 +29,8 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_argocd"></a> [argocd](#module\_argocd) | git@github.com:steled/terraformmodules.git//argocd | v0.24 |
-| <a name="module_cert_manager_cloudflare"></a> [cert\_manager\_cloudflare](#module\_cert\_manager\_cloudflare) | git@github.com:steled/terraformmodules.git//cert-manager_cloudflare | v0.24 |
+| <a name="module_argocd"></a> [argocd](#module\_argocd) | git@github.com:steled/terraformmodules.git//argocd | v0.25 |
+| <a name="module_cert_manager_cloudflare"></a> [cert\_manager\_cloudflare](#module\_cert\_manager\_cloudflare) | git@github.com:steled/terraformmodules.git//cert-manager_cloudflare | v0.25 |
 
 ## Resources
 
