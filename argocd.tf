@@ -12,8 +12,8 @@ module "argocd" {
   argocd_values_yaml              = "${path.root}/helm-values/argocd.yaml"
   argocd_apps_values_yaml         = "${path.root}/helm-values/argocd_apps.yaml"
   telegram_bot_token              = var.telegram_bot_token
-  argocd_accounts_steled_password = var.argocd_accounts_steled_password
-  argocd_apps_sshPrivateKey       = var.argocd_apps_sshPrivateKey
+  accounts_steled_password        = var.argocd_accounts_steled_password
+  apps_sshPrivateKey              = var.argocd_apps_sshPrivateKey
 
   depends_on = [module.cert_manager_cloudflare]
 }
