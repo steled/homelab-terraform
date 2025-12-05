@@ -16,7 +16,7 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.10 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 3.1.0 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 2.1.3 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.38.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 3.0.0 |
 
 ## Providers
 
