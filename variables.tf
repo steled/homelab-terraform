@@ -13,6 +13,11 @@ variable "cloudflare_api_token" {
   description = "Cloudflare API token for DNS settings"
 }
 
+variable "domain_prd" {
+  type        = string
+  description = "Domain for applications"
+}
+
 variable "server" {
   description = "machine which will run the control plane"
   type = object({
@@ -20,6 +25,11 @@ variable "server" {
     user        = string,
     private_key = string,
   })
+}
+
+variable "shared_gateway_ip_address" {
+  type        = string
+  description = "IP address of shared gateway"
 }
 
 variable "argocd_domain_prd" {
