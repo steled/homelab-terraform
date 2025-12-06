@@ -1,6 +1,7 @@
 ## General
 cert_manager_email = "<REDACTED>"
 cilium_cidr        = "<REDACTED>"
+domain_prd         = "<REDACTED>"
 # ingress_ip_address             = "<REDACTED>"
 # sftp_ip_address = "<REDACTED>"
 server = {
@@ -8,6 +9,7 @@ server = {
   user        = "<REDACTED>"
   private_key = "<REDACTED>"
 }
+shared_gateway_ip_address = "<REDACTED>"
 
 ## Cloudflare
 cloudflare_api_token = "<REDACTED>"
