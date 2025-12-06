@@ -8,6 +8,6 @@ provider "helm" {
   }
 }
 
-provider "kubectl" {
-  config_path = "/home/steled/.kube/config"
-}
+# provider "kubectl" {
+#   config_path = "/home/steled/.kube/config"
+# }

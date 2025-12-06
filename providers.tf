@@ -10,9 +10,9 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = "~> 3.0.0"
     }
-    kubectl = {
-      source  = "alekc/kubectl"
-      version = "~> 2.1.3"
-    }
+    # kubectl = {
+    #   source  = "alekc/kubectl"
+    #   version = "~> 2.1.3"
+    # }
   }
 }
