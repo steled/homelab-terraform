@@ -11,7 +11,9 @@ configs:
     ssh-creds:
      url: git@github.com:steled
      sshPrivateKey: |
-      ${argocd_apps_sshPrivateKey}
+      ${apps_sshPrivateKey}
+  params:
+    server.insecure: true
   rbac:
     policy.csv: |
       g, steled, role:admin
@@ -24,21 +26,29 @@ configs:
 
 server:
   certificate:
-    enabled: true
+    enabled: false
     issuer:
       group: cert-manager.io
       kind: ClusterIssuer
       name: cloudflare-letsencrypt-${environment}
 
   ingress:
-    enabled: true
+    enabled: false
     annotations:
       cert-manager.io/cluster-issuer: cloudflare-letsencrypt-${environment}
       ingress.cilium.io/loadbalancer-mode: shared
       ingress.cilium.io/tls-passthrough: enabled
       ingress.cilium.io/force-https: enabled
     ingressClassName: cilium
-    tls: true
+    tls: false
+
+  httproute:
+    enabled: true
+    parentRefs:
+      - name: shared-gateway
+        namespace: kube-system
+    hostnames:
+      - ${domain}
 
 notifications:
   notifiers:
