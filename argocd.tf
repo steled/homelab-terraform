@@ -1,5 +1,5 @@
 module "argocd" {
-  source = "git@github.com:steled/terraformmodules.git//argocd?ref=v0.29"
+  source = "git@github.com:steled/terraformmodules.git//argocd?ref=v0.31"
   # source = "../terraformmodules/argocd/"
 
   # renovate: datasource=github-tags depName=argocd packageName=argoproj/argo-helm
