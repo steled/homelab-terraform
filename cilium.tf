@@ -94,7 +94,7 @@ resource "kubernetes_manifest" "httproute" {
     "apiVersion" = "gateway.networking.k8s.io/v1"
     "kind"       = "HTTPRoute"
     "metadata" = {
-      "name" = "hubble-ui"
+      "name"      = "hubble-ui"
       "namespace" = "kube-system"
     }
     "spec" = {
