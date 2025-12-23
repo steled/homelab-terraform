@@ -464,6 +464,30 @@ resource "kubernetes_manifest" "gateway" {
             "mode" = "Terminate"
           }
         },
+        # {
+        #   "allowedRoutes" = {
+        #     "namespaces" = {
+        #       "from" = "Selector"
+        #       "selector" = {
+        #         "matchLabels" = {
+        #           "shared-gateway-access" = "true"
+        #         }
+        #       }
+        #     }
+        #   }
+        #   "hostname" = "home.${var.domain_prd}"
+        #   "name"     = "shared-homarr-https-terminate"
+        #   "port"     = 443
+        #   "protocol" = "HTTPS"
+        #   "tls" = {
+        #     "certificateRefs" = [
+        #       {
+        #         "name" = "homarr-tls-secret"
+        #       }
+        #     ]
+        #     "mode" = "Terminate"
+        #   }
+        # },
         {
           "allowedRoutes" = {
             "namespaces" = {
