@@ -20,6 +20,7 @@ projects:
       - https://jellyfin.github.io/jellyfin-helm
       - https://bitnami-labs.github.io/sealed-secrets
       - https://steled.github.io/fritzbox-cloudflare-dyndns-chart/
+      # - oci://ghcr.io/homarr-labs/charts/homarr
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -79,6 +80,8 @@ applications:
             #   value: "<REDACTED>"
             - name: "hassio.httproute.hostnames0"
               value: "<REDACTED>"
+            # - name: "homarr.httproute.hostnames0"
+            #   value: "<REDACTED>"
             - name: "immich.server.ingress.main.hosts0.host"
               value: "<REDACTED>"
             - name: "immich.server.ingress.main.tls0.hosts0"
