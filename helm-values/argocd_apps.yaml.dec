@@ -21,6 +21,7 @@ projects:
       - https://bitnami-labs.github.io/sealed-secrets
       - https://steled.github.io/fritzbox-cloudflare-dyndns-chart/
       # - oci://ghcr.io/homarr-labs/charts/homarr
+      - oci://ghcr.io/m0nsterrr/helm-charts/homepage
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -82,6 +83,10 @@ applications:
               value: "<REDACTED>"
             # - name: "homarr.httproute.hostnames0"
             #   value: "<REDACTED>"
+            - name: "homepage.httproute.hostnames0"
+              value: "<REDACTED>"
+            - name: "homepage.domain"
+              value: "<REDACTED>"
             - name: "immich.server.ingress.main.hosts0.host"
               value: "<REDACTED>"
             - name: "immich.server.ingress.main.tls0.hosts0"
