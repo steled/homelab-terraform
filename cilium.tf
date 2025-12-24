@@ -499,6 +499,30 @@ resource "kubernetes_manifest" "gateway" {
               }
             }
           }
+          "hostname" = "home.${var.domain_prd}"
+          "name"     = "shared-homepage-https-terminate"
+          "port"     = 443
+          "protocol" = "HTTPS"
+          "tls" = {
+            "certificateRefs" = [
+              {
+                "name" = "homepage-tls-secret"
+              }
+            ]
+            "mode" = "Terminate"
+          }
+        },
+        {
+          "allowedRoutes" = {
+            "namespaces" = {
+              "from" = "Selector"
+              "selector" = {
+                "matchLabels" = {
+                  "shared-gateway-access" = "true"
+                }
+              }
+            }
+          }
           "hostname" = "hassio.${var.domain_prd}"
           "name"     = "shared-hassio-https-terminate"
           "port"     = 443
