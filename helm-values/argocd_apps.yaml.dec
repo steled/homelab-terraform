@@ -73,6 +73,8 @@ applications:
               value: "<REDACTED>"
             - name: "fritzboxCloudflareDyndns.env.dyndnsServerUsername"
               value: "<REDACTED>"
+            - name: "fritzboxCloudflareDyndns.env.fritzboxEndpointUrl"
+              value: "<REDACTED>"
             - name: "fritzboxCloudflareDyndns.httproute.hostnames0"
               value: "<REDACTED>"
             # - name: "hassio.ingress.host0"
