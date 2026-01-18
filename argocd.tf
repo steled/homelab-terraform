@@ -5,7 +5,7 @@ module "argocd" {
   # renovate: datasource=github-tags depName=argocd packageName=argoproj/argo-helm
   argocd_version = "9.3.4" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/Chart.yaml#L6
   # renovate: datasource=github-tags depName=argocd-apps packageName=argoproj/argo-helm
-  argocd_apps_version       = "2.0.3" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/Chart.yaml#L5
+  argocd_apps_version       = "2.0.4" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/Chart.yaml#L5
   kubernetes_namespace_name = "argocd"
   domain                    = var.argocd_domain_prd
   environment               = var.argocd_env_prd
