@@ -22,6 +22,7 @@ projects:
       - https://steled.github.io/fritzbox-cloudflare-dyndns-chart/
       # - oci://ghcr.io/homarr-labs/charts/homarr
       - oci://ghcr.io/m0nsterrr/helm-charts/homepage
+      - https://charts.bakito.net
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -61,10 +62,10 @@ applications:
         targetRevision: HEAD
         helm:
           parameters:
-            - name: "apprise.htpasswd"
-              value: "<REDACTED>"
-            - name: "apprise.domain"
-              value: "<REDACTED>"
+            # - name: "apprise.htpasswd"
+            #   value: "<REDACTED>"
+            # - name: "apprise.domain"
+            #   value: "<REDACTED>"
             - name: "certmanager.clusterIssuer.email"
               value: "<REDACTED>"
             - name: "fritzboxCloudflareDyndns.env.cloudflareZonesIpv4"
@@ -149,14 +150,16 @@ applications:
               value: "<REDACTED>"
             - name: "nextcloud.postgresql.global.postgresql.auth.username"
               value: "<REDACTED>"
-            - name: "vault.server.ingress.hosts0.host"
-              value: "<REDACTED>"
-            - name: "vault.server.ingress.tls0.hosts0"
-              value: "<REDACTED>"
+            # - name: "vault.server.ingress.hosts0.host"
+            #   value: "<REDACTED>"
+            # - name: "vault.server.ingress.tls0.hosts0"
+            #   value: "<REDACTED>"
             # - name: "victoriametrics.vmsingle.ingress.hosts0"
             #   value: "<REDACTED>"
             # - name: "victoriametrics.vmsingle.ingress.tls0.hosts0"
             #   value: "<REDACTED>"
+            - name: "sealedSecretsWeb.httproute.hostnames0"
+              value: "<REDACTED>"
             - name: "victoriametrics.vmsingle.route.hostnames0"
               value: "<REDACTED>"
             # - name: "victoriametrics.alertmanager.ingress.hosts0"
