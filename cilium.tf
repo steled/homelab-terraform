@@ -691,6 +691,30 @@ resource "kubernetes_manifest" "gateway" {
               }
             }
           }
+          "hostname" = "secrets.${var.domain_prd}"
+          "name"     = "shared-sealed-secrets-web-https-terminate"
+          "port"     = 443
+          "protocol" = "HTTPS"
+          "tls" = {
+            "certificateRefs" = [
+              {
+                "name" = "sealed-secrets-web-tls-secret"
+              }
+            ]
+            "mode" = "Terminate"
+          }
+        },
+        {
+          "allowedRoutes" = {
+            "namespaces" = {
+              "from" = "Selector"
+              "selector" = {
+                "matchLabels" = {
+                  "shared-gateway-access" = "true"
+                }
+              }
+            }
+          }
           "hostname" = "vmagent.${var.domain_prd}"
           "name"     = "shared-vmagent-https-terminate"
           "port"     = 443
