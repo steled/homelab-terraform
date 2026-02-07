@@ -46,7 +46,7 @@ server:
     enabled: true
     parentRefs:
       - name: shared-gateway
-        namespace: kube-system
+        namespace: istio-system
     hostnames:
       - ${domain}
 
