@@ -9,7 +9,8 @@ server = {
   user        = "<REDACTED>"
   private_key = "<REDACTED>"
 }
-shared_gateway_ip_address = "<REDACTED>"
+shared_cilium_gateway_ip_address = "<REDACTED>"
+shared_istio_gateway_ip_address  = "<REDACTED>"
 
 ## Cloudflare
 cloudflare_api_token = "<REDACTED>"
