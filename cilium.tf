@@ -667,7 +667,7 @@ resource "kubernetes_manifest" "gateway" {
               }
             }
           }
-          "hostname" = "console.s3.${var.domain_prd}"
+          "hostname" = "console-s3.${var.domain_prd}"
           "name"     = "shared-minio-console-https-terminate"
           "port"     = 443
           "protocol" = "HTTPS"
