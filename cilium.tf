@@ -571,6 +571,30 @@ resource "kubernetes_manifest" "gateway" {
               }
             }
           }
+          "hostname" = "kiali.${var.domain_prd}"
+          "name"     = "shared-kiali-https-terminate"
+          "port"     = 443
+          "protocol" = "HTTPS"
+          "tls" = {
+            "certificateRefs" = [
+              {
+                "name" = "kiali-tls-secret"
+              }
+            ]
+            "mode" = "Terminate"
+          }
+        },
+        {
+          "allowedRoutes" = {
+            "namespaces" = {
+              "from" = "Selector"
+              "selector" = {
+                "matchLabels" = {
+                  "shared-gateway-access" = "true"
+                }
+              }
+            }
+          }
           "hostname" = "jelly.${var.domain_prd}"
           "name"     = "shared-jellyfin-https-terminate"
           "port"     = 443
