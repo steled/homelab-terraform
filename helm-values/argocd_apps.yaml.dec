@@ -23,6 +23,7 @@ projects:
       # - oci://ghcr.io/homarr-labs/charts/homarr
       - oci://ghcr.io/m0nsterrr/helm-charts/homepage
       - https://charts.bakito.net
+      - https://kiali.org/helm-charts
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -112,6 +113,8 @@ applications:
             #   value: "<REDACTED>"
             # - name: "jellyfin.ingress.tls0.hosts0"
             #   value: "<REDACTED>"
+            - name: "kiali.httproute.hostnames0"
+              value: "<REDACTED>"
             - name: "longhorn.httproute.hostnames0"
               value: "<REDACTED>"
             # - name: "longhorn.host"
