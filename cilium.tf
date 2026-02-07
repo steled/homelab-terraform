@@ -95,7 +95,7 @@ resource "kubernetes_manifest" "httproute" {
     "kind"       = "HTTPRoute"
     "metadata" = {
       "name"      = "hubble-ui"
-      "namespace" = "kube-system"
+      "namespace" = "istio-system"
     }
     "spec" = {
       hostnames = [
@@ -146,7 +146,7 @@ resource "kubernetes_manifest" "httproute" {
 # spec:
 #   addresses:
 #   - type: IPAddress
-#     value: ${var.shared_gateway_ip_address}
+#     value: ${var.shared_cilium_gateway_ip_address}
 #   gatewayClassName: cilium
 #   listeners:
 #   - allowedRoutes:
@@ -363,7 +363,7 @@ resource "kubernetes_manifest" "gateway" {
       "addresses" = [
         {
           "type"  = "IPAddress"
-          "value" = var.shared_gateway_ip_address
+          "value" = var.shared_cilium_gateway_ip_address
         }
       ]
       "gatewayClassName" = "cilium"
