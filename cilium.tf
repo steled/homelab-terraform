@@ -106,7 +106,7 @@ resource "kubernetes_manifest" "httproute" {
           group     = "gateway.networking.k8s.io"
           kind      = "Gateway"
           name      = "shared-gateway"
-          namespace = "kube-system"
+          namespace = "istio-system"
         }
       ]
       rules = [
