@@ -39,6 +39,7 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 | [kubernetes_manifest.ciliumloadbalancerippool](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.httproute](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.istio-shared-gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [terraform_data.files](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 
 ## Inputs
@@ -54,7 +55,8 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 | <a name="input_cloudflare_api_token"></a> [cloudflare\_api\_token](#input\_cloudflare\_api\_token) | Cloudflare API token for DNS settings | `string` | n/a | yes |
 | <a name="input_domain_prd"></a> [domain\_prd](#input\_domain\_prd) | Domain for applications | `string` | n/a | yes |
 | <a name="input_server"></a> [server](#input\_server) | machine which will run the control plane | <pre>object({<br/>    host        = string,<br/>    user        = string,<br/>    private_key = string,<br/>  })</pre> | n/a | yes |
-| <a name="input_shared_cilium_gateway_ip_address"></a> [shared\_gateway\_ip\_address](#input\_shared\_gateway\_ip\_address) | IP address of shared gateway | `string` | n/a | yes |
+| <a name="input_shared_cilium_gateway_ip_address"></a> [shared\_cilium\_gateway\_ip\_address](#input\_shared\_cilium\_gateway\_ip\_address) | IP address of cilium shared gateway | `string` | n/a | yes |
+| <a name="input_shared_istio_gateway_ip_address"></a> [shared\_istio\_gateway\_ip\_address](#input\_shared\_istio\_gateway\_ip\_address) | IP address of istio shared gateway | `string` | n/a | yes |
 | <a name="input_telegram_bot_token"></a> [telegram\_bot\_token](#input\_telegram\_bot\_token) | Bot token for Telegram | `string` | n/a | yes |
 
 ## Outputs
