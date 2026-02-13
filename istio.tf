@@ -10,8 +10,8 @@ resource "kubernetes_manifest" "istio-shared-gateway" {
     spec = {
       addresses = [
         {
-          type   = "IPAddress"
-          value  = var.shared_istio_gateway_ip_address
+          type  = "IPAddress"
+          value = var.shared_istio_gateway_ip_address
         }
       ]
       gatewayClassName = "istio"
