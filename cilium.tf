@@ -95,7 +95,7 @@ resource "kubernetes_manifest" "httproute" {
     "kind"       = "HTTPRoute"
     "metadata" = {
       "name"      = "hubble-ui"
-      "namespace" = "istio-system"
+      "namespace" = "kube-system"
     }
     "spec" = {
       hostnames = [
