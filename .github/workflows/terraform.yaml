@@ -91,7 +91,7 @@ jobs:
       run: tflint --init
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
+      uses: hashicorp/setup-terraform@v4
 
     - name: Show version
       run: terraform --version
