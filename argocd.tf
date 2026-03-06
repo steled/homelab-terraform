@@ -14,6 +14,10 @@ module "argocd" {
   telegram_bot_token        = var.telegram_bot_token
   accounts_steled_password  = var.argocd_accounts_steled_password
   apps_sshPrivateKey        = var.argocd_apps_sshPrivateKey
+  kubernetes_namespace_labels = {
+    "istio.io/dataplane-mode" = "ambient"
+    "shared-gateway-access"   = "true"
+  }
 
   depends_on = [module.cert_manager_cloudflare]
 }
