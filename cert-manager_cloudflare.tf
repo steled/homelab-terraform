@@ -8,10 +8,10 @@ module "cert_manager_cloudflare" {
   cloudflare_api_token     = var.cloudflare_api_token
   cert_manager_email       = var.cert_manager_email
   cert_manager_values_yaml = "${path.root}/helm-values/cert-manager.yaml"
-  namespace_annotations    = {
+  namespace_annotations = {
     "argocd.argoproj.io/sync-options" = "ServerSideApply=true"
   }
-  namespace_labels         = {
+  namespace_labels = {
     "istio.io/dataplane-mode" = "ambient"
   }
 }
