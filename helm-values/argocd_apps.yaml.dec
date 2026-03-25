@@ -24,6 +24,7 @@ projects:
       - oci://ghcr.io/m0nsterrr/helm-charts/homepage
       - https://charts.bakito.net
       - https://kiali.org/helm-charts
+      - https://steled.github.io/hedgedoc-kubernetes/
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -89,6 +90,10 @@ applications:
               value: "<REDACTED>"
             # - name: "homarr.httproute.hostnames0"
             #   value: "<REDACTED>"
+            - name: "hedgedoc.extraEnv.cmd_domain"
+              value: "<REDACTED>"
+            - name: "hedgedoc.gatewayApi.hostname"
+              value: "<REDACTED>"
             - name: "homepage.httproute.hostnames0"
               value: "<REDACTED>"
             - name: "homepage.domain"
