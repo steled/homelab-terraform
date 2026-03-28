@@ -25,6 +25,8 @@ projects:
       - https://charts.bakito.net
       - https://kiali.org/helm-charts
       - https://steled.github.io/hedgedoc-kubernetes/
+      - oci://ghcr.io/go-vikunja/helm-chart/vikunja
+      - https://community-charts.github.io/helm-charts
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -170,6 +172,16 @@ applications:
             #   value: "<REDACTED>"
             # - name: "victoriametrics.vmsingle.ingress.tls0.hosts0"
             #   value: "<REDACTED>"
+            - name: "outline.httproute.hostnames0"
+              value: "<REDACTED>"
+            - name: "outline.smtp.host"
+              value: "<REDACTED>"
+            - name: "outline.smtp.fromEmail"
+              value: "<REDACTED>"
+            - name: "outline.smtp.replyEmail"
+              value: "<REDACTED>"
+            - name: "outline.url"
+              value: "<REDACTED>"
             - name: "sealedSecretsWeb.httproute.hostnames0"
               value: "<REDACTED>"
             - name: "victoriametrics.vmsingle.route.hostnames0"
@@ -201,6 +213,10 @@ applications:
             - name: "victoriametrics.grafana.tls0.hosts0"
               value: "<REDACTED>"
             - name: "victoriametrics.grafana.httproute.hostnames0"
+              value: "<REDACTED>"
+            - name: "vikunja.httproute.hostnames0"
+              value: "<REDACTED>"
+            - name: "vikunja.service.publicurl"
               value: "<REDACTED>"
     syncPolicy:
       syncOptions:
