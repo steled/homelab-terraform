@@ -27,6 +27,8 @@ projects:
       - https://steled.github.io/hedgedoc-kubernetes/
       - oci://ghcr.io/go-vikunja/helm-chart/vikunja
       - https://community-charts.github.io/helm-charts
+      - oci://ghcr.io/steled/outline-chart/outline
+      - oci://ghcr.io/steled/charts/shopping-list
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -183,6 +185,8 @@ applications:
             - name: "outline.url"
               value: "<REDACTED>"
             - name: "sealedSecretsWeb.httproute.hostnames0"
+              value: "<REDACTED>"
+            - name: "shoppingList.networking.gateway.hostname"
               value: "<REDACTED>"
             - name: "victoriametrics.vmsingle.route.hostnames0"
               value: "<REDACTED>"
