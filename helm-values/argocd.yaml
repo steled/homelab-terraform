@@ -61,11 +61,6 @@ configs:
         - BackgroundScanReport
         - ClusterBackgroundScanReport
         - UpdateRequest
-      ### PersistentVolumeClaim resources excluded to prevent accidental deletion of PVCs by ArgoCD, which can lead to data loss
-      - apiGroups:
-        - ""
-        kinds:
-        - PersistentVolumeClaim
     users.anonymous.enabled: false
   credentialTemplates:
     ssh-creds:
