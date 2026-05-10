@@ -29,6 +29,8 @@ projects:
       - https://community-charts.github.io/helm-charts
       - oci://ghcr.io/steled/outline-chart/outline
       - oci://ghcr.io/steled/charts/shopping-list
+      - https://intel.github.io/helm-charts/
+      - https://kubernetes-sigs.github.io/node-feature-discovery/charts
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
@@ -49,6 +51,10 @@ projects:
       kind: PriorityClass
     - group: cert-manager.io
       kind: ClusterIssuer
+    - group: deviceplugin.intel.com
+      kind: GpuDevicePlugin
+    - group: nfd.k8s-sigs.io
+      kind: NodeFeatureRule
 
 applications:
   root-app:
@@ -94,10 +100,10 @@ applications:
               value: "<REDACTED>"
             # - name: "homarr.httproute.hostnames0"
             #   value: "<REDACTED>"
-            - name: "hedgedoc.extraEnv.cmd_domain"
-              value: "<REDACTED>"
-            - name: "hedgedoc.gatewayApi.hostname"
-              value: "<REDACTED>"
+            # - name: "hedgedoc.extraEnv.cmd_domain"
+            #   value: "<REDACTED>"
+            # - name: "hedgedoc.gatewayApi.hostname"
+            #   value: "<REDACTED>"
             - name: "homepage.httproute.hostnames0"
               value: "<REDACTED>"
             - name: "homepage.domain"
@@ -174,16 +180,16 @@ applications:
             #   value: "<REDACTED>"
             # - name: "victoriametrics.vmsingle.ingress.tls0.hosts0"
             #   value: "<REDACTED>"
-            - name: "outline.httproute.hostnames0"
-              value: "<REDACTED>"
-            - name: "outline.smtp.host"
-              value: "<REDACTED>"
-            - name: "outline.smtp.fromEmail"
-              value: "<REDACTED>"
-            - name: "outline.smtp.replyEmail"
-              value: "<REDACTED>"
-            - name: "outline.url"
-              value: "<REDACTED>"
+            # - name: "outline.httproute.hostnames0"
+            #   value: "<REDACTED>"
+            # - name: "outline.smtp.host"
+            #   value: "<REDACTED>"
+            # - name: "outline.smtp.fromEmail"
+            #   value: "<REDACTED>"
+            # - name: "outline.smtp.replyEmail"
+            #   value: "<REDACTED>"
+            # - name: "outline.url"
+            #   value: "<REDACTED>"
             - name: "sealedSecretsWeb.httproute.hostnames0"
               value: "<REDACTED>"
             - name: "shoppingList.networking.gateway.hostname"
@@ -218,10 +224,10 @@ applications:
               value: "<REDACTED>"
             - name: "victoriametrics.grafana.httproute.hostnames0"
               value: "<REDACTED>"
-            - name: "vikunja.httproute.hostnames0"
-              value: "<REDACTED>"
-            - name: "vikunja.service.publicurl"
-              value: "<REDACTED>"
+            # - name: "vikunja.httproute.hostnames0"
+            #   value: "<REDACTED>"
+            # - name: "vikunja.service.publicurl"
+            #   value: "<REDACTED>"
     syncPolicy:
       syncOptions:
         - RespectResourceOrder=true
