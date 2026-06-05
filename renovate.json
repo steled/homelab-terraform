@@ -23,6 +23,17 @@
   "packageRules": [
     {
       "matchManagers": [
+        "terraform"
+      ],
+      "matchDatasources": [
+        "terraform-provider"
+      ],
+      "registryUrls": [
+        "https://registry.opentofu.org"
+      ]
+    },
+    {
+      "matchManagers": [
         "custom.regex"
       ],
       "separateMinorPatch": true
