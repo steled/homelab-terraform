@@ -1,3 +1,8 @@
+# Only argocd-server needs to be part of the Istio ambient mesh (for the shared-gateway HTTPRoute
+# ingress below). The other components are excluded via podLabels, because Cilium's NetworkPolicy
+# identity resolution for pod/namespaceSelector-based ingress rules doesn't work reliably for
+# ztunnel-redirected ambient traffic in this cluster, which broke both kubelet health probes and
+# server->repo-server gRPC calls after argo-helm chart 10.x turned on NetworkPolicies by default.
 global:
   domain: ${domain}
 
@@ -105,7 +110,29 @@ server:
     hostnames:
       - ${domain}
 
+controller:
+  podLabels:
+    istio.io/dataplane-mode: none
+
+dex:
+  podLabels:
+    istio.io/dataplane-mode: none
+
+redis:
+  podLabels:
+    istio.io/dataplane-mode: none
+
+repoServer:
+  podLabels:
+    istio.io/dataplane-mode: none
+
+applicationSet:
+  podLabels:
+    istio.io/dataplane-mode: none
+
 notifications:
+  podLabels:
+    istio.io/dataplane-mode: none
   notifiers:
     service.telegram: |
       token: $telegram-token
