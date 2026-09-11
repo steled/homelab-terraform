@@ -29,6 +29,7 @@ projects:
       - https://community-charts.github.io/helm-charts
       - oci://ghcr.io/steled/outline-chart/outline
       - oci://ghcr.io/steled/charts/shopping-list
+      - oci://ghcr.io/steled/charts/budget-book
       - https://intel.github.io/helm-charts/
       - https://kubernetes-sigs.github.io/node-feature-discovery/charts
     destinations:
@@ -78,6 +79,8 @@ applications:
             #   value: "<REDACTED>"
             # - name: "apprise.domain"
             #   value: "<REDACTED>"
+            - name: "budgetBook.networking.gateway.hostname"
+              value: "<REDACTED>"
             - name: "certmanager.clusterIssuer.email"
               value: "<REDACTED>"
             - name: "certmanager.certificate.dnsNames"
