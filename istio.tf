@@ -5,6 +5,12 @@ resource "kubernetes_manifest" "istio-shared-gateway" {
     metadata = {
       name      = "shared-gateway"
       namespace = "istio-system"
+      # Workaround for istio/istio#61940: on K8s 1.36 istiod fails to write this annotation
+      # itself (via /status) and then never renders the gateway Deployment, so Istio
+      # upgrades don't reach the gateway. Remove once an Istio release with the fix is installed.
+      annotations = {
+        "gateway.istio.io/controller-version" = "5"
+      }
     }
 
     spec = {
