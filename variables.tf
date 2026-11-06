@@ -8,11 +8,6 @@ variable "cilium_cidr" {
   description = "CIDR range for Cilium loadbalancer IP pool"
 }
 
-variable "cloudflare_api_token" {
-  type        = string
-  description = "Cloudflare API token for DNS settings"
-}
-
 variable "domain_prd" {
   type        = string
   description = "Domain for applications"

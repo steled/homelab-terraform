@@ -52,7 +52,6 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 | <a name="input_argocd_env_prd"></a> [argocd\_env\_prd](#input\_argocd\_env\_prd) | Environment for Argo CD prd | `string` | n/a | yes |
 | <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Email for cert-mnanager | `string` | n/a | yes |
 | <a name="input_cilium_cidr"></a> [cilium\_cidr](#input\_cilium\_cidr) | CIDR range for Cilium loadbalancer IP pool | `string` | n/a | yes |
-| <a name="input_cloudflare_api_token"></a> [cloudflare\_api\_token](#input\_cloudflare\_api\_token) | Cloudflare API token for DNS settings | `string` | n/a | yes |
 | <a name="input_domain_prd"></a> [domain\_prd](#input\_domain\_prd) | Domain for applications | `string` | n/a | yes |
 | <a name="input_server"></a> [server](#input\_server) | machine which will run the control plane | <pre>object({<br/>    host        = string,<br/>    user        = string,<br/>    private_key = string,<br/>  })</pre> | n/a | yes |
 | <a name="input_shared_cilium_gateway_ip_address"></a> [shared\_cilium\_gateway\_ip\_address](#input\_shared\_cilium\_gateway\_ip\_address) | IP address of cilium shared gateway | `string` | n/a | yes |
