@@ -13,7 +13,6 @@ shared_cilium_gateway_ip_address = "<REDACTED>"
 shared_istio_gateway_ip_address  = "<REDACTED>"
 
 ## Cloudflare
-cloudflare_api_token = "<REDACTED>"
 # cloudflare_dns_zone_id = "<REDACTED>"
 # cloudflare_dnsrecord = [
 #   "(\"<REDACTED>\" \"<REDACTED>\")",
