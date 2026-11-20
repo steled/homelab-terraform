@@ -64,15 +64,6 @@
         "nextcloud/helm"
       ],
       "extractVersion": "^nextcloud-(?<version>.*)$"
-    },
-    {
-      "matchDatasources": [
-        "github-tags"
-      ],
-      "matchDepNames": [
-        "argocd-apps"
-      ],
-      "extractVersion": "^argocd-apps-(?<version>.*)$"
     }
   ]
 }
