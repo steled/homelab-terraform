@@ -21,42 +21,42 @@ source: https://github.com/mrsauravsahu/kube-homelab/tree/main
 
 | Name | Version |
 |------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 3.3 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 3.2 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_argocd"></a> [argocd](#module\_argocd) | git@github.com:steled/terraformmodules.git//argocd | v0.38 |
-| <a name="module_cert_manager_cloudflare"></a> [cert\_manager\_cloudflare](#module\_cert\_manager\_cloudflare) | git@github.com:steled/terraformmodules.git//cert-manager_cloudflare | v0.38 |
+No modules.
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.argocd_apps](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubernetes_manifest.ciliuml2announcementpolicy](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.ciliumloadbalancerippool](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.httproute](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.istio-shared-gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_namespace_v1.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
+| [kubernetes_secret_v1.sealed_secrets_key](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
+| [kubernetes_secret_v1.transcrypt_password](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [terraform_data.files](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [kubernetes_resources.sealed_secrets_keys](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/resources) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_argocd_accounts_steled_password"></a> [argocd\_accounts\_steled\_password](#input\_argocd\_accounts\_steled\_password) | Password for Argo CD user steled | `string` | n/a | yes |
-| <a name="input_argocd_apps_sshPrivateKey"></a> [argocd\_apps\_sshPrivateKey](#input\_argocd\_apps\_sshPrivateKey) | SSH private key for argocd-apps repository | `string` | n/a | yes |
-| <a name="input_argocd_domain_prd"></a> [argocd\_domain\_prd](#input\_argocd\_domain\_prd) | Domain for Argo CD ingress prd | `string` | n/a | yes |
-| <a name="input_argocd_env_prd"></a> [argocd\_env\_prd](#input\_argocd\_env\_prd) | Environment for Argo CD prd | `string` | n/a | yes |
-| <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Email for cert-mnanager | `string` | n/a | yes |
+| <a name="input_argocd_apps_repo_path"></a> [argocd\_apps\_repo\_path](#input\_argocd\_apps\_repo\_path) | Path to the local (transcrypt-decrypted) checkout of the argocd-apps repository, relative to this repository | `string` | `"../argocd-apps"` | no |
+| <a name="input_argocd_apps_transcrypt_password"></a> [argocd\_apps\_transcrypt\_password](#input\_argocd\_apps\_transcrypt\_password) | transcrypt password of the argocd-apps repository (used by the argocd-transcrypt-plugin in the repo-server) | `string` | n/a | yes |
 | <a name="input_cilium_cidr"></a> [cilium\_cidr](#input\_cilium\_cidr) | CIDR range for Cilium loadbalancer IP pool | `string` | n/a | yes |
 | <a name="input_domain_prd"></a> [domain\_prd](#input\_domain\_prd) | Domain for applications | `string` | n/a | yes |
 | <a name="input_server"></a> [server](#input\_server) | machine which will run the control plane | <pre>object({<br/>    host        = string,<br/>    user        = string,<br/>    private_key = string,<br/>  })</pre> | n/a | yes |
 | <a name="input_shared_cilium_gateway_ip_address"></a> [shared\_cilium\_gateway\_ip\_address](#input\_shared\_cilium\_gateway\_ip\_address) | IP address of cilium shared gateway | `string` | n/a | yes |
 | <a name="input_shared_istio_gateway_ip_address"></a> [shared\_istio\_gateway\_ip\_address](#input\_shared\_istio\_gateway\_ip\_address) | IP address of istio shared gateway | `string` | n/a | yes |
-| <a name="input_telegram_bot_token"></a> [telegram\_bot\_token](#input\_telegram\_bot\_token) | Bot token for Telegram | `string` | n/a | yes |
 
 ## Outputs
 
