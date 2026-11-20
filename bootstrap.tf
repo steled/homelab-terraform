@@ -10,6 +10,10 @@
 #
 # Versions and values of Argo CD are read from a local checkout of argocd-apps (single source of truth,
 # updated by Renovate there). The checkout must be decrypted with transcrypt (values-private.yaml).
+#
+# After the bootstrap Argo CD manages itself (argocd-apps: helm-argocd, helm-argocd-apps), therefore the
+# helm releases ignore all changes: updates happen via git in argocd-apps, not via tofu apply.
+# Broken Argo CD after an update: revert in argocd-apps and run bin/argocd-recover.sh (see README).
 
 locals {
   argocd_apps_repo   = "${path.root}/${var.argocd_apps_repo_path}"
@@ -17,12 +21,10 @@ locals {
 
   argocd_version            = local.argocd_apps_values.argocd.version
   transcrypt_plugin_version = local.argocd_apps_values.argocd.transcryptPlugin.version
+  argocd_apps_version       = local.argocd_apps_values.argocdApps.version
 
   argocd_values_yaml         = file("${local.argocd_apps_repo}/charts/argocd/values.yaml")
   argocd_private_values_yaml = file("${local.argocd_apps_repo}/charts/argocd/values-private.yaml")
-
-  # renovate: datasource=github-tags depName=argocd-apps packageName=argoproj/argo-helm
-  argocd_apps_version = "2.0.8" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/Chart.yaml#L5
 
   sealed_secrets_keys = {
     for key in yamldecode(file("${path.root}/bootstrap/sealed-secrets-keys.yaml")).items : key.metadata.name => key
@@ -119,6 +121,9 @@ resource "helm_release" "argocd" {
   ]
 
   lifecycle {
+    # bootstrap only, afterwards managed by Argo CD (argocd-apps: apps/templates/helm-argocd.yaml)
+    ignore_changes = all
+
     precondition {
       condition     = !startswith(nonsensitive(local.argocd_private_values_yaml), "U2FsdGVkX1")
       error_message = "${local.argocd_apps_repo}/charts/argocd/values-private.yaml is still encrypted: run 'transcrypt -c aes-256-cbc -p <password>' in the argocd-apps checkout (password: argocd_apps_transcrypt_password in prd.tfvars)."
@@ -152,7 +157,12 @@ resource "helm_release" "argocd_apps" {
   chart      = "argocd-apps"
   version    = local.argocd_apps_version
 
-  values = [sensitive(file("${path.root}/helm-values/argocd_apps.yaml"))]
+  values = [file("${local.argocd_apps_repo}/charts/argocd-apps/values.yaml")]
+
+  lifecycle {
+    # bootstrap only, afterwards managed by Argo CD (argocd-apps: apps/templates/helm-argocd-apps.yaml)
+    ignore_changes = all
+  }
 
   depends_on = [helm_release.argocd]
 }
