@@ -1,8 +1,3 @@
-variable "cert_manager_email" {
-  type        = string
-  description = "Email for cert-mnanager"
-}
-
 variable "cilium_cidr" {
   type        = string
   description = "CIDR range for Cilium loadbalancer IP pool"

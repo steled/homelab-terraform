@@ -10,4 +10,5 @@ duckdns-webhook-values.yaml filter=crypt diff=crypt merge=crypt
 # nextcloud.tf filter=crypt diff=crypt merge=crypt
 # nextcloud-stg.tf filter=crypt diff=crypt merge=crypt
 prd.tfvars filter=crypt diff=crypt merge=crypt
+sealed-secrets-keys.yaml filter=crypt diff=crypt merge=crypt
 tst.tfvars filter=crypt diff=crypt merge=crypt

@@ -1,7 +1,6 @@
 ## General
-cert_manager_email = "<REDACTED>"
-cilium_cidr        = "<REDACTED>"
-domain_prd         = "<REDACTED>"
+cilium_cidr = "<REDACTED>"
+domain_prd  = "<REDACTED>"
 # ingress_ip_address             = "<REDACTED>"
 # sftp_ip_address = "<REDACTED>"
 server = {
