@@ -35,12 +35,6 @@ locals {
 # Sealed Secrets keys
 ################################################################################
 
-import {
-  for_each = local.sealed_secrets_keys
-  to       = kubernetes_secret_v1.sealed_secrets_key[each.key]
-  id       = "kube-system/${each.key}"
-}
-
 resource "kubernetes_secret_v1" "sealed_secrets_key" {
   for_each = local.sealed_secrets_keys
 
@@ -80,21 +74,6 @@ check "sealed_secrets_keys_backed_up" {
 ################################################################################
 # Argo CD
 ################################################################################
-
-moved {
-  from = module.argocd.kubernetes_namespace_v1.argocd
-  to   = kubernetes_namespace_v1.argocd
-}
-
-moved {
-  from = module.argocd.helm_release.argocd
-  to   = helm_release.argocd
-}
-
-moved {
-  from = module.argocd.helm_release.argocd-apps
-  to   = helm_release.argocd_apps
-}
 
 resource "kubernetes_namespace_v1" "argocd" {
   metadata {
@@ -165,16 +144,4 @@ resource "helm_release" "argocd_apps" {
   }
 
   depends_on = [helm_release.argocd]
-}
-
-################################################################################
-# cert-manager: managed by Argo CD (argocd-apps: helm-cert-manager)
-################################################################################
-
-removed {
-  from = module.cert_manager_cloudflare
-
-  lifecycle {
-    destroy = false
-  }
 }
