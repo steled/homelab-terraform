@@ -48,6 +48,22 @@ resource "kubernetes_secret_v1" "sealed_secrets_key" {
   }
 }
 
+data "kubernetes_resources" "sealed_secrets_keys" {
+  api_version    = "v1"
+  kind           = "Secret"
+  namespace      = "kube-system"
+  label_selector = "sealedsecrets.bitnami.com/sealed-secrets-key"
+}
+
+check "sealed_secrets_keys_backed_up" {
+  assert {
+    condition = alltrue([
+      for o in data.kubernetes_resources.sealed_secrets_keys.objects : contains(keys(local.sealed_secrets_keys), o.metadata.name)
+    ])
+    error_message = "The cluster has Sealed Secrets keys that are missing in bootstrap/sealed-secrets-keys.yaml: run bin/backup-sealed-secrets-keys.sh and commit the result."
+  }
+}
+
 ################################################################################
 # Argo CD
 ################################################################################

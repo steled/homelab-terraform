@@ -48,6 +48,14 @@ if [ $? -eq 1 ]; then
   sudo -- sh -c "ssh-keyscan -t rsa $HOST_IP >> ~/.ssh/known_hosts" 2> /dev/null
 fi
 
+echo -e "\033[41;106mExporting Sealed Secrets keys\033[0m"
+
+# all keys, so that SealedSecrets sealed with any (also newly created) key can be decrypted after a restore
+# (the transcrypt-encrypted copy for bootstrap.tf is bootstrap/sealed-secrets-keys.yaml in homelab-terraform)
+mkdir -p /ext/backups
+( umask 077; kubectl get secret -n kube-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > /ext/backups/sealed-secrets-keys.yaml ) \
+  || echo -e "\033[41;101mExport of Sealed Secrets keys failed\033[0m"
+
 echo -e "\033[41;106mRunning rsync\033[0m"
 
 sudo rsync --exclude 'persistent' --rsync-path="sudo rsync" --delete -ave "ssh -i /home/steled/.ssh/backup.id_rsa" /ext/ steled@$HOST:/ext/k8s-c01_backup/
