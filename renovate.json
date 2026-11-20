@@ -70,15 +70,6 @@
         "github-tags"
       ],
       "matchDepNames": [
-        "argocd"
-      ],
-      "extractVersion": "^argo-cd-(?<version>.*)$"
-    },
-    {
-      "matchDatasources": [
-        "github-tags"
-      ],
-      "matchDepNames": [
         "argocd-apps"
       ],
       "extractVersion": "^argocd-apps-(?<version>.*)$"

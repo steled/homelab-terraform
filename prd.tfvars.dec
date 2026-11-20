@@ -53,20 +53,6 @@ shared_istio_gateway_ip_address  = "<REDACTED>"
 # longhorn_domain_prd = "<REDACTED>"
 # longhorn_env_prd    = "<REDACTED>"
 
-# Argo CD
-argocd_domain_prd               = "<REDACTED>"
-argocd_env_prd                  = "<REDACTED>"
-argocd_accounts_steled_password = "<REDACTED>"
-argocd_apps_sshPrivateKey       = <<-EOT
------BEGIN OPENSSH PRIVATE KEY-----
-      <REDACTED>
-      -----END OPENSSH PRIVATE KEY-----
-EOT
-
-## Telegram
-telegram_bot_token = "<REDACTED>"
-# telegram_chat_id   = "<REDACTED>"
-
 ## VictoriaMetrics
 # victoriametrics_vmsingle_domains       = "<REDACTED>"
 # victoriametrics_alertmanager_domains   = "<REDACTED>"
@@ -121,3 +107,6 @@ telegram_bot_token = "<REDACTED>"
 # rsync_dst_ip_address  = "<REDACTED>"
 # rsync_username        = "<REDACTED>"
 # rsync_src_folder_path = "<REDACTED>"
+
+## Argo CD
+argocd_apps_transcrypt_password = "<REDACTED>"

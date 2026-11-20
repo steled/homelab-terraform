@@ -3,13 +3,24 @@
 # Terraform only bootstraps the cluster (and restores it after a disaster):
 #   1. Sealed Secrets keys (restored from bootstrap/sealed-secrets-keys.yaml, transcrypt-encrypted),
 #      so that the sealed-secrets controller deployed by Argo CD can decrypt all SealedSecrets.
-#   2. Argo CD and the argocd-apps release (projects + root-app).
+#   2. The transcrypt password for the argocd-apps repository (argocd-transcrypt-plugin in the repo-server).
+#   3. Argo CD and the argocd-apps release (projects + root-app).
 # Everything else (including cert-manager and the sealed-secrets controller) is managed by Argo CD
 # from the argocd-apps repository.
+#
+# Versions and values of Argo CD are read from a local checkout of argocd-apps (single source of truth,
+# updated by Renovate there). The checkout must be decrypted with transcrypt (values-private.yaml).
 
 locals {
-  # renovate: datasource=github-tags depName=argocd packageName=argoproj/argo-helm
-  argocd_version = "10.18.2" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/Chart.yaml#L6
+  argocd_apps_repo   = "${path.root}/${var.argocd_apps_repo_path}"
+  argocd_apps_values = yamldecode(file("${local.argocd_apps_repo}/apps/values.yaml"))
+
+  argocd_version            = local.argocd_apps_values.argocd.version
+  transcrypt_plugin_version = local.argocd_apps_values.argocd.transcryptPlugin.version
+
+  argocd_values_yaml         = file("${local.argocd_apps_repo}/charts/argocd/values.yaml")
+  argocd_private_values_yaml = file("${local.argocd_apps_repo}/charts/argocd/values-private.yaml")
+
   # renovate: datasource=github-tags depName=argocd-apps packageName=argoproj/argo-helm
   argocd_apps_version = "2.0.8" # check version here: https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/Chart.yaml#L5
 
@@ -101,15 +112,36 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   version    = local.argocd_version
 
-  values = [sensitive(templatefile("${path.root}/helm-values/argocd.yaml", {
-    environment              = var.argocd_env_prd
-    domain                   = var.argocd_domain_prd
-    telegram_bot_token       = var.telegram_bot_token
-    accounts_steled_password = var.argocd_accounts_steled_password
-    apps_sshPrivateKey       = var.argocd_apps_sshPrivateKey
-  }))]
+  values = [
+    local.argocd_values_yaml,
+    sensitive(local.argocd_private_values_yaml),
+    yamlencode({ repoServer = { image = { tag = local.transcrypt_plugin_version } } }),
+  ]
 
-  depends_on = [kubernetes_secret_v1.sealed_secrets_key]
+  lifecycle {
+    precondition {
+      condition     = !startswith(nonsensitive(local.argocd_private_values_yaml), "U2FsdGVkX1")
+      error_message = "${local.argocd_apps_repo}/charts/argocd/values-private.yaml is still encrypted: run 'transcrypt -c aes-256-cbc -p <password>' in the argocd-apps checkout (password: argocd_apps_transcrypt_password in prd.tfvars)."
+    }
+  }
+
+  depends_on = [
+    kubernetes_secret_v1.sealed_secrets_key,
+    kubernetes_secret_v1.transcrypt_password,
+  ]
+}
+
+resource "kubernetes_secret_v1" "transcrypt_password" {
+  metadata {
+    name      = "transcrypt-password"
+    namespace = kubernetes_namespace_v1.argocd.metadata[0].name
+  }
+
+  data = {
+    cipher = "aes-256-cbc"
+    # key = repository URL as sanitized by the plugin (git@github.com:steled/argocd-apps.git)
+    "github.com_steled_argocd-apps" = var.argocd_apps_transcrypt_password
+  }
 }
 
 resource "helm_release" "argocd_apps" {
