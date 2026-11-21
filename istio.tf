@@ -30,12 +30,6 @@ resource "kubernetes_manifest" "hubble-ui-httproute" {
         {
           group     = "gateway.networking.k8s.io"
           kind      = "Gateway"
-          name      = "shared-gateway"
-          namespace = "istio-system"
-        },
-        {
-          group     = "gateway.networking.k8s.io"
-          kind      = "Gateway"
           name      = "internal-gateway"
           namespace = "istio-system"
         }
