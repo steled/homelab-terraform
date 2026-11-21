@@ -85,9 +85,7 @@ No modules.
 | [helm_release.argocd_apps](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubernetes_manifest.ciliuml2announcementpolicy](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_manifest.ciliumloadbalancerippool](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.httproute](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.istio-shared-gateway](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.hubble-ui-httproute](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 | [kubernetes_namespace_v1.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
 | [kubernetes_secret_v1.sealed_secrets_key](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.transcrypt_password](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
@@ -103,8 +101,6 @@ No modules.
 | <a name="input_cilium_cidr"></a> [cilium\_cidr](#input\_cilium\_cidr) | CIDR range for Cilium loadbalancer IP pool | `string` | n/a | yes |
 | <a name="input_domain_prd"></a> [domain\_prd](#input\_domain\_prd) | Domain for applications | `string` | n/a | yes |
 | <a name="input_server"></a> [server](#input\_server) | machine which will run the control plane | <pre>object({<br/>    host        = string,<br/>    user        = string,<br/>    private_key = string,<br/>  })</pre> | n/a | yes |
-| <a name="input_shared_cilium_gateway_ip_address"></a> [shared\_cilium\_gateway\_ip\_address](#input\_shared\_cilium\_gateway\_ip\_address) | IP address of cilium shared gateway | `string` | n/a | yes |
-| <a name="input_shared_istio_gateway_ip_address"></a> [shared\_istio\_gateway\_ip\_address](#input\_shared\_istio\_gateway\_ip\_address) | IP address of istio shared gateway | `string` | n/a | yes |
 
 ## Outputs
 
