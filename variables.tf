@@ -17,9 +17,9 @@ variable "server" {
   })
 }
 
-variable "shared_cilium_gateway_ip_address" {
+variable "internal_istio_gateway_ip_address" {
   type        = string
-  description = "IP address of cilium shared gateway"
+  description = "IP address of istio internal gateway"
 }
 
 variable "shared_istio_gateway_ip_address" {
