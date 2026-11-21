@@ -17,15 +17,7 @@ variable "server" {
   })
 }
 
-variable "shared_cilium_gateway_ip_address" {
-  type        = string
-  description = "IP address of cilium shared gateway"
-}
 
-variable "shared_istio_gateway_ip_address" {
-  type        = string
-  description = "IP address of istio shared gateway"
-}
 
 variable "argocd_apps_transcrypt_password" {
   type        = string
