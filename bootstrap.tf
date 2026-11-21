@@ -80,6 +80,7 @@ resource "kubernetes_namespace_v1" "argocd" {
     name = "argocd"
     labels = {
       "istio.io/dataplane-mode" = "ambient"
+      "internal-gateway-access" = "true"
       "shared-gateway-access"   = "true"
     }
   }
