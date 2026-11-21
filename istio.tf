@@ -105,11 +105,6 @@ resource "kubernetes_manifest" "istio-internal-gateway" {
   }
 }
 
-moved {
-  from = kubernetes_manifest.httproute
-  to   = kubernetes_manifest.hubble-ui-httproute
-}
-
 resource "kubernetes_manifest" "hubble-ui-httproute" {
   manifest = {
     "apiVersion" = "gateway.networking.k8s.io/v1"
@@ -127,6 +122,12 @@ resource "kubernetes_manifest" "hubble-ui-httproute" {
           group     = "gateway.networking.k8s.io"
           kind      = "Gateway"
           name      = "shared-gateway"
+          namespace = "istio-system"
+        },
+        {
+          group     = "gateway.networking.k8s.io"
+          kind      = "Gateway"
+          name      = "internal-gateway"
           namespace = "istio-system"
         }
       ]
